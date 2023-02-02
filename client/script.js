@@ -1,5 +1,6 @@
 import bot from "./assets/bot.svg";
 import user from "./assets/user.svg";
+import delores from "./assets/delores.png";
 
 const form = document.querySelector("form");
 const chatContainer = document.querySelector(".chat_container");
@@ -31,7 +32,7 @@ function typeText(element, text) {
     } else {
       clearInterval(interval);
     }
-  }, 20);
+  }, 30);
 }
 
 // Generate a unique ID for each message
@@ -68,7 +69,7 @@ const handleSubmit = async (e) => {
   const data = new FormData(form);
 
   // Modify message with Grammy prefix prompt
-  const grammyMessage = `Try and answer the question, but answer with random information that a 90 year old woman with dementia would use. Include some random information, and an indication that you're thinking or confused. ${data.get(
+  const grammyMessage = `Answer this question as if you were a funny, whacky, 90 year old woman with dementia who forgets things and says random things like a funny dementia patient would ${data.get(
     "prompt"
   )}`;
 
@@ -89,6 +90,9 @@ const handleSubmit = async (e) => {
   loader(messageDiv);
 
   // Fetch data from server
+
+  const serverLocation = "https://delores.onrender.com/";
+
   const response = await fetch("http://localhost:8000", {
     method: "POST",
     headers: {
