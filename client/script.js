@@ -93,7 +93,7 @@ const handleSubmit = async (e) => {
 
   const serverLocation = "https://delores.onrender.com/";
 
-  const response = await fetch("http://localhost:8000", {
+  const response = await fetch(serverLocation, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
