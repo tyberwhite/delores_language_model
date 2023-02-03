@@ -94,7 +94,7 @@ const handleSubmit = async (e) => {
   const deployedHost = "https://delores.onrender.com/";
   const localHost = "http://localhost:8000";
 
-  const response = await fetch(localHost, {
+  const response = await fetch(deployedHost, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
