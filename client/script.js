@@ -47,7 +47,7 @@ function generateUniqueId() {
 // Chat container
 function chatStripe(isAi, value, uniqueId) {
   return `
-      <div class="wrapper" ${isAi && "ai"} >
+      <div class="wrapper ${isAi && "ai"}" >
         <div class="chat">
           <div class="profile">
             <img 
@@ -75,7 +75,7 @@ const handleSubmit = async (e) => {
 
   console.log(grammyMessage);
   // user's chatStripe
-  chatContainer.innerHTML = chatStripe(false, data.get("prompt"));
+  chatContainer.innerHTML += chatStripe(false, data.get("prompt"));
   form.reset();
 
   // bot's chatStripe
@@ -91,9 +91,10 @@ const handleSubmit = async (e) => {
 
   // Fetch data from server
 
-  const serverLocation = "https://delores.onrender.com/";
+  const deployedHost = "https://delores.onrender.com/";
+  const localHost = "http://localhost:8000";
 
-  const response = await fetch(serverLocation, {
+  const response = await fetch(localHost, {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
